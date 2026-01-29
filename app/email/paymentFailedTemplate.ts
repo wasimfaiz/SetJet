@@ -1,0 +1,140 @@
+export function paymentFailedTemplate(
+  name: string,
+  serviceName: string,
+  amount: number,
+  transactionId: string
+) {
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Failed</title>
+
+  <style>
+    body, table, td, a { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+    table { border-collapse:collapse !important; }
+    img { border:0; outline:none; text-decoration:none; max-width:100%; }
+
+    .wrapper {
+      max-width:900px;
+      width:95%;
+      margin:auto;
+      background:#fff;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 6px 24px rgba(0,0,0,0.1);
+    }
+
+    .logo-img {
+      display:block;
+      margin:0 auto;
+      max-height:90px;
+      max-width:180px;
+    }
+
+    @media only screen and (max-width:480px) {
+      .header-padding { padding:30px 15px 50px !important; }
+      .body-padding   { padding:30px 20px !important; }
+      h1 { font-size:22px !important; }
+      h2 { font-size:18px !important; }
+      p  { font-size:15px !important; }
+    }
+  </style>
+</head>
+
+<body style="margin:0;padding:0;background:#f3f6fb;font-family:'Poppins',Arial,sans-serif;">
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header-padding"
+       style="background:linear-gradient(135deg,#1e3a8a,#ff7e29);
+              padding:50px 30px 70px;
+              text-align:center;
+              border-bottom-left-radius:80% 40px;
+              border-bottom-right-radius:80% 40px;">
+    
+    <img src="https://yastudy.com/assets/images/Yastudy.png"
+         alt="YAStudy Logo"
+         class="logo-img" />
+
+    <h1 style="color:#fff;font-size:26px;font-weight:600;margin:14px 0 0;">
+      Payment Failed
+    </h1>
+
+    <p style="color:#ffe5e5;font-size:15px;margin:10px 0 0;">
+      Your payment could not be processed
+    </p>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-padding" style="padding:50px 60px 40px;">
+    
+    <h2 style="color:#d00000;font-weight:700;font-size:22px;margin-bottom:12px;">
+      Hi ${name},
+    </h2>
+
+    <p style="color:#374151;font-size:16px;line-height:1.7;margin-bottom:20px;">
+      Unfortunately, your payment for <strong>${serviceName}</strong> was not completed.  
+      Below are the details:
+    </p>
+
+    <!-- PAYMENT DETAILS CARD -->
+    <table role="presentation" width="100%"
+           style="background:#fff;border-radius:18px;
+                  box-shadow:0 3px 12px rgba(0,0,0,0.06);
+                  padding:25px;margin-bottom:25px;">
+      <tr>
+        <td style="padding:10px;font-weight:600;color:#1e3a8a;">Amount Attempted</td>
+        <td style="padding:10px;color:#374151;">₹ ${amount}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;font-weight:600;color:#1e3a8a;">Transaction ID</td>
+        <td style="padding:10px;color:#374151;">${transactionId}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px;font-weight:600;color:#1e3a8a;">Service</td>
+        <td style="padding:10px;color:#374151;">${serviceName}</td>
+      </tr>
+    </table>
+
+    <p style="color:#374151;font-size:16px;margin-bottom:30px;">
+      If the amount was deducted, it will automatically be refunded or settled within  
+      1–2 hours by your bank.  
+      You may retry the payment through your dashboard.
+    </p>
+
+    <div style="text-align:center;margin:30px 0;">
+      <a href="https://yastudy.com/dashboard"
+         style="background:linear-gradient(135deg,#ff7e29,#1e3a8a);
+                padding:16px 40px;border-radius:40px;
+                color:#fff;text-decoration:none;font-weight:600;
+                font-size:16px;box-shadow:0 8px 22px rgba(30,58,138,.3);">
+        Retry Payment
+      </a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:linear-gradient(135deg,#ff7e29,#1e3a8a);
+              color:#fff;text-align:center;
+              padding:35px 25px;
+              border-top-left-radius:60% 30px;
+              border-top-right-radius:60% 30px;">
+    
+    <p style="font-size:13px;margin:0;line-height:1.8;">
+      This is an automated message from <strong>YAStudy</strong>.<br>
+      Please do not reply directly to this email.<br><br>
+      © ${new Date().getFullYear()} YAStudy. All rights reserved.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
+  `;
+}

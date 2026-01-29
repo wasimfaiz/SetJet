@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f7fafc;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 0, 0, 0; /* White color for text */
+    --background-rgb: 255, 255, 255; /* White color for background */
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Abhaya Libre", sans-serif;
+  display: flex;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.container {
+  width: 80%;
+  /* height: 100vh; */
+  padding: 1.5rem;
+  float: right;
+  background-color: #f7fafc;
+  margin-top: 3rem;
+  overflow-y: scroll;
+  position: relative;
+  height: 100vh;
+}
+.sidebar {
+  overflow-y: scroll;
+  position: relative;
+  height: 100vh;
+}
+/* Apply padding 0 on screens smaller than 768px */
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+    width: 88%;
+  }
+}
+.sticky-div {
+  position: sticky;
+  bottom: 0; /* Stick to the bottom of the container */
+  background: white; /* Optional: Ensure it has a background */
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.react-datepicker__input-container input {
+  /* Style the input field */
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  color: #333;
+}
+
+.react-datepicker__day--selected {
+  /* Style the selected day */
+  background-color: #007bff;
+  color: #fff;
+}
+/* TipTap / ProseMirror base fixes */
+.ProseMirror {
+  outline: none;
+  min-height: 200px;
+  line-height: 1.6;
+}
+
+/* Tables: visible borders, spacing and header style */
+.ProseMirror table {
+  width: 100%;
+  border-collapse: collapse; /* important */
+  border-spacing: 0;
+  margin: 1rem 0;
+  table-layout: fixed;
+}
+
+.ProseMirror th,
+.ProseMirror td {
+  border: 1px solid #cbd5e1 !important; /* slate-300 */
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+  word-break: break-word;
+}
+
+.ProseMirror thead th {
+  background-color: #f8fafc; /* slate-50 */
+  font-weight: 600;
+}
+
+.ProseMirror table p {
+  margin: 0;
+}
+
+/* Make column resize handle visible (TipTap's resizable uses col-resize) */
+.ProseMirror table td,
+.ProseMirror table th {
+  position: relative;
+}
+
+/* Optional: make selected cell slightly highlighted */
+.ProseMirror td.is-selected,
+.ProseMirror th.is-selected {
+  background: rgba(59, 130, 246, 0.05); /* subtle blue */
+}
+
+/* Ensure images inside editor scale down */
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.editor-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.editor-content h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+
+.editor-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.editor-content p {
+  font-size: 1rem;
+}
